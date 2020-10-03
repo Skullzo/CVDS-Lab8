@@ -29,7 +29,7 @@ public class ServiciosAlquilerFactory {
                setEnvironmentId(env);
                setClassPathResource(pathResource);
                bind(ItemDAO.class).to(MyBATISItemDAO.class);
-               bind(ServiciosAlquiler.class).to(ServiciosAlquilerItemsImpl.class);
+               bind(ServiciosAlquiler.class).to((Class<? extends ServiciosAlquiler>) ServiciosAlquilerItemsImpl.class);
            }
        });
    }

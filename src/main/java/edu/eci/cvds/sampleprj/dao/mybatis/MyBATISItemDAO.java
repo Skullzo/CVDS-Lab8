@@ -1,6 +1,7 @@
 package edu.eci.cvds.sampleprj.dao.mybatis;
 
 import com.google.inject.Inject;
+
 import com.google.inject.Singleton;
 import edu.eci.cvds.sampleprj.dao.ItemDAO;
 import edu.eci.cvds.sampleprj.dao.PersistenceException;
@@ -9,6 +10,7 @@ import edu.eci.cvds.samples.entities.Item;
 import edu.eci.cvds.sampleprj.dao.mybatis.mappers.ItemMapper;
 import edu.eci.cvds.samples.entities.TipoItem;
 import java.sql.SQLException;
+import java.util.*;
 
 public class MyBATISItemDAO implements ItemDAO{
 
@@ -37,6 +39,47 @@ public class MyBATISItemDAO implements ItemDAO{
 
 
   }
+  
+  @Override
+  public List<Item> loadAll() throws PersistenceException {
+	  try {
+		  return itemMapper.consultarItems();
+	  } catch (
+			  org.apache.ibatis.exceptions.PersistenceException e) {
+		  throw new PersistenceException("Error al consultar los items");
+		  
+	  }
+  }
+
+@Override
+public List<Item> loadAvailableItems() throws PersistenceException {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@Override
+public TipoItem loadTipoItem(int id) throws PersistenceException {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@Override
+public long consultarCostoAlquier(int iditem, int numdias) throws PersistenceException {
+	// TODO Auto-generated method stub
+	return 0;
+}
+
+@Override
+public void actualizarTarifa(int id, long tarifa) throws PersistenceException {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public void addItem(Item i) throws PersistenceException {
+	// TODO Auto-generated method stub
+	
+}
 
   }
 
