@@ -603,3 +603,212 @@ public class ServiciosAlquilerFactory {
 **Luego, implementamos la interfaz ```ItemDAO``` de la siguiente forma.**
 
 <img  src="https://github.com/JuanMunozD/CVDS8/blob/main/Im%C3%A1genes/Parte1.9.2.PNG">
+
+**Procedemos ahora a crear la interfaz ```ItemRentadoDAO``` de la siguiente forma.**
+
+<img  src="https://github.com/JuanMunozD/CVDS8/blob/main/Im%C3%A1genes/Parte1.9.3.PNG">
+
+**Por último, creamos la última interfaz que utilizaremos en el código que será ```TipoItemDAO```, quedando de la siguiente forma.**
+
+<img  src="https://github.com/JuanMunozD/CVDS8/blob/main/Im%C3%A1genes/Parte1.9.4.PNG">
+
+## Parte II - Pruebas
+
+1. Implemente las operaciones de la lógica que hagan falta para satisfacer los requerimientos para la capa de presentación, teniendo en cuenta, que puede requerir agregar más operaciones a los DAOs -y por ende- más mappers de MyBATIS.
+
+2. Tenga en cuenta: las operaciones que impliquen registrar o actualizar registros, demarcar la transaccionalidad con la anotación @Transactional.
+
+3. Cree el archivo de configuracion de la base de datos de pruebas que es de tipo ```h2```, en el directorio ```src/main/resources```:
+```
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+   <typeAliases>
+       <typeAlias type='edu.eci.cvds.samples.entities.Cliente' alias='Cliente'/>
+       <typeAlias type='edu.eci.cvds.samples.entities.Item' alias='Item'/>
+       <typeAlias type='edu.eci.cvds.samples.entities.ItemRentado' alias='ItemRentado'/>
+       <typeAlias type='edu.eci.cvds.samples.entities.TipoItem' alias='TipoItem'/>
+   </typeAliases>
+
+   <environments default="test">
+       <environment id="test">
+           <transactionManager type="JDBC" />
+           <dataSource type="POOLED">
+               <property name="driver" value="org.h2.Driver" />
+               <property name="url" value="jdbc:h2:file:./target/db/testdb;MODE=MYSQL" />
+               <property name="username" value="sa" />
+               <property name="password" value="" />
+           </dataSource>
+       </environment>
+   </environments>
+
+   <mappers>
+       <mapper resource="mappers/ClienteMapper.xml"></mapper>
+       <mapper resource="mappers/ItemMapper.xml"></mapper>
+       <mapper resource="mappers/ItemRentadoMapper.xml"></mapper>
+       <mapper resource="mappers/TipoItemMapper.xml"></mapper>
+   </mappers> 
+
+</configuration>
+```
+
+4. Cree un archivo de pruebas
+```
+package edu.eci.cvds.test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.google.inject.Inject;
+import edu.eci.cvds.sampleprj.dao.PersistenceException;
+import edu.eci.cvds.samples.entities.Cliente;
+import edu.eci.cvds.samples.entities.ItemRentado;
+import edu.eci.cvds.samples.services.ExcepcionServiciosAlquiler;
+import edu.eci.cvds.samples.services.ServiciosAlquiler;
+import edu.eci.cvds.samples.services.ServiciosAlquilerFactory;
+import org.apache.ibatis.session.SqlSession;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.Assert;
+
+public class ServiciosAlquilerTest {
+
+    @Inject
+    private SqlSession sqlSession;
+
+    ServiciosAlquiler serviciosAlquiler;
+
+    public ServiciosAlquilerTest() {
+        serviciosAlquiler = ServiciosAlquilerFactory.getInstance().getServiciosAlquilerTesting();
+    }
+
+    @Before
+    public void setUp() {
+    }
+
+    @Test
+    public void emptyDB() {
+        for(int i = 0; i < 100; i += 10) {
+            boolean r = false;
+            try {
+                Cliente cliente = serviciosAlquiler.consultarCliente(documento);
+            } catch(ExcepcionServiciosAlquiler e) {
+                r = true;
+            } catch(IndexOutOfBoundsException e) {
+                r = true;
+            }
+            // Validate no Client was found;
+            Assert.assertTrue(r);
+        };
+    }
+}
+```
+
+Cree diferentes pruebas utilizando las clases de equivalencia necesarias para las diferentes operaciones definidas en los servicios.
+
+## Parte III - Capa Presentación
+
+1. Realice los cambios necesarios en el archivo pom.xml de tal forma que el proyecto se construya de manera correcta como una aplicación WEB, incluyendo las dependencias (jstl, jsf-api, jsf-impl, primefaces, etc) y los plugins (maven war, tomcat7 maven, etc.).
+
+2. Agregue el archivo web.xml requerido con la configuración necesaria. Al final del archivo agregue el siguiente listener:
+
+3. Cree el listener con el paquete y nombre indicados de forma que se asocie la configuración de Guice y MyBatis a la inicialización del contexto de la aplicación en el servidor tomcat7 embebido, con el siguiente contenido inicial, resolviendo el ‘TODO’ (asociando la interfaz del servicio a la implementación Stub):
+```
+package edu.eci.cvds.guice;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+import org.mybatis.guice.XMLMyBatisModule;
+import org.mybatis.guice.datasource.helper.JdbcHelper;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+
+public class GuiceContextListener implements ServletContextListener {
+
+    public void contextDestroyed(ServletContextEvent servletContextEvent) {
+        ServletContext servletContext = servletContextEvent.getServletContext();
+        servletContext.removeAttribute(Injector.class.getName());
+    }
+
+    public void contextInitialized(ServletContextEvent servletContextEvent) {
+        Injector injector = Guice.createInjector(new XMLMyBatisModule() {
+            @Override
+            protected void initialize() {
+                install(JdbcHelper.MySQL);
+                setEnvironmentId("development");
+                setClassPathResource("mybatis-config.xml");
+
+                // TODO Add service class associated to Stub implementation
+                bind(AAA.class).to(YYY.class);
+                bind(BBB.class).to(ZZZ.class);
+            }
+        });
+
+        servletContextEvent.getServletContext().setAttribute(Injector.class.getName(), injector);
+    }
+}
+```
+
+4. Cree el bean BasePageBean en el paquete “edu.eci.cvds.view” con el siguiente contenido para que se puedan inyectar los componentes necesarios en todas las clases “hijas” que serán los beans de la capa de presentación:
+```
+package edu.eci.cvds.view;
+
+import java.io.Serializable;
+import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
+import javax.servlet.ServletContext;
+import com.google.inject.Injector;
+
+public abstract class BasePageBean implements Serializable {
+
+    private Injector injector;
+
+    public Injector getInjector() {
+        if (injector == null) {
+            ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext()
+                    .getContext();
+            injector = (Injector) servletContext.getAttribute(Injector.class.getName());
+        }
+        return injector;
+    }
+
+    public void setInjector(Injector injector) {
+        this.injector = injector;
+    }
+
+    @PostConstruct
+    public void init() {
+        getInjector().injectMembers(this);
+    }
+}
+```
+
+5. Implementar la aplicación Web que permita agregar nuevos clientes a la videotienda, y registrar alquileres para los mismos. Ambas funcionalidades estarán en dos vistas diferentes (registrocliente.xhtml, registroalquiler.xhtml), de acuerdo con las siguientes especificaciones (tenga en cuenta que, por ahora, la aplicación no maneja ningún esquema de autenticación):
+      1. La vista de ‘registro de clientes’ debe (1) mostrar el listado paginado de los clientes registrados hasta el momento (con la opción de selecciar de uno de éstos), y (2) debe mostrar los campos para poder registrar un nuevo cliente (con su respectivo botón de registro). Cuando se registre un nuevo cliente, se deberá mostrar automáticamente el nuevo cliente en la parte superior.
+      2. Cuando se seleccione uno de los usuarios ya creados, se debe redirigir al usuario a la vista de ‘registro de alquileres’. En esta vista, dado el cliente seleccionado, se debe (1) mostrar los items que no ha regresado, junto con el valor de la multa total asociada a los mismos a la fecha (fecha del sistema), y (2), debe permtir registrar un nuevo alquiler ingresando el código del item (asumiendo que éste se ingresará con un lector de código de barras), el número de días del alquiler, y mostrando el costo del alquiler antes de su confirmación. En el momento que se confirme, se debe volver a la página anterior (registro de clientes).
+      3. Ambas vistas se basarán en el ManagedBean de sesión ‘AlquilerItemsBean’ que debe extender ‘BasePageBean’, el cual -a su vez- hace uso de la interfaz ‘ServiciosAlquiler’ (no agregar directamente una implementación concreta, esto se realizará en la configuración de Guice).
+      4. El desarrollo de ambas vistas debe quedar distribuido entre los dos desarrolladores de la siguiente manera:
+         * Desarrollador 1: Vista registro de cliente.
+         * Desarrollador 2: Vista registro de alquiler.
+         * Desarrollador 1 y 2: ManagedBean ‘AlquilerItemsBean’.
+         * Cada integrante debe realizar su propio commit pues después se verificarán los cambios de cada uno.
+      Nota. Para ver cómo navegar entre vistas con JSF revise [este enlace](http://www.tutorialspoint.com/jsf/jsf_page_navigation.htm).
+6. Construya y despliegue la aplicación con el comando ```mvn tomcat7:run``` y realice pruebas de la presentación, que debe estar funcionando correctamente, con la implementación ‘Stub’ del servicio de alquiler.
+
+7. Modifique la configuración de Guice para asociar a la interfaz, el servicio concreto de alquileres, de forma que todos los cambios que se realicen en la presentación, se actualicen en base de datos de manera correcta.
+
+8. Realice los ajustes necesarios para que la aplicación funcione de manera correcta y se asegure que todos los métodos están realizando las operaciones sobre la base de datos.
+
+## Parte IV - Entrega Continua
+
+1. Realice toda la configuración necesaria de CircleCI y Heroku para que la aplicación se construya y despliegue de manera automática cada que se realice un commit al repositorio.
+
+2. Realice también todas las configuraciones necesarias de Codacy y los ajustes necesarios para obtener una calificación satisfactoria.
+
+3. Verifique que la aplicación se despliegue correctamente en Heroku y sea completamente funcional, tal como se encontraba en local.
+
+4. Agregue en el Readme los enlaces necesarios a Heroku, Codacy, etc. para que se pueda verificar el correcto funcionamiento de toda la aplicación.
