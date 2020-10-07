@@ -20,7 +20,7 @@ public interface ItemDAO {
     
     public TipoItem loadTipoItem(int id) throws PersistenceException;
     
-    public long consultarCostoAlquier(int iditem, int numdias) throws PersistenceException;
+    public long consultarCostoAlquiler(int iditem, int numdias) throws PersistenceException;
     
     @Transactional
     public void actualizarTarifa(int id, long tarifa) throws PersistenceException;

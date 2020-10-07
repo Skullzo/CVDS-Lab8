@@ -17,8 +17,8 @@ public interface ItemMapper {
     
     public List<Item> consultarItems();        
     
-    public Item consultarItem(@Param("item") int it);
-    
+    public Item consultarItem(@Param("item") int id);
+
     public void insertarItem(@Param("item") Item it);
 
 	public List<Item> consultarItemsDisponibles();
