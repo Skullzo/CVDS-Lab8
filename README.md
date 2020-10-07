@@ -819,7 +819,7 @@ https://laboratoriocvds8.herokuapp.com/
 
 Badge **Codacy**
 	
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/8bccd05e4cee4cd6ac6f79770f0f013a)](https://www.codacy.com/manual/JuanMunozD/CVDS-6?utm_source=github.com&utm_medium=referral&utm_content=JuanMunozD/CVDS-6&utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/ca73ba7b8c624a1e88b5a6e94e57889e)](https://www.codacy.com/gh/JuanMunozD/CVDS8/dashboard?utm_source=github.com&utm_medium=referral&utm_content=JuanMunozD/CVDS8&utm_campaign=Badge_Grade)
 
 3.  Verifique que la aplicación se despliegue correctamente en Heroku y sea completamente funcional, tal como se encontraba en local.
 
