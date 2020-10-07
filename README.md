@@ -809,6 +809,9 @@ public abstract class BasePageBean implements Serializable {
 
 2. Realice también todas las configuraciones necesarias de Codacy y los ajustes necesarios para obtener una calificación satisfactoria.
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6070b197c3644c03bb3f0ec79d641675)](https://app.codacy.com/app/emsec/hal?utm_source=github.com&utm_medium=referral&utm_content=emsec/hal&utm_campaign=Badge_Grade_Settings)
+[![pipeline status](https://gitlab.com/swallat/hal/badges/master/pipeline.svg)](https://gitlab.com/swallat/hal/commits/master) [![coverage report](https://codecov.io/gh/emsec/hal/branch/master/graph/badge.svg)](https://codecov.io/gh/emsec/hal) [![Slack](https://img.shields.io/badge/slack-join-blue.svg)](https://communityinviter.com/apps/hal-re/hal-re) [![CodeFactor](https://www.codefactor.io/repository/github/emsec/hal/badge)](https://www.codefactor.io/repository/github/emsec/hal)
+
 3.  Verifique que la aplicación se despliegue correctamente en Heroku y sea completamente funcional, tal como se encontraba en local.
 
 4. Agregue en el Readme los enlaces necesarios a Heroku, Codacy, etc. para que se pueda verificar el correcto funcionamiento de toda la aplicación.
