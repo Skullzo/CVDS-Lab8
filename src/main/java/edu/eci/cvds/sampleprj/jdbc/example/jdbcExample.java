@@ -31,7 +31,7 @@ import java.util.logging.Logger;
  *
  * @author hcadavid
  */
-public class JDBCExample {
+public class jdbcExample {
     
     public static void main(String args[]){
         try {
@@ -66,7 +66,7 @@ public class JDBCExample {
             con.close();
                                    
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(JDBCExample.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(jdbcExample.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
