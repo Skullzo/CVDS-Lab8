@@ -616,7 +616,7 @@ public class ServiciosAlquilerFactory {
 
 1. Implemente las operaciones de la lógica que hagan falta para satisfacer los requerimientos para la capa de presentación, teniendo en cuenta, que puede requerir agregar más operaciones a los DAOs -y por ende- más mappers de MyBATIS.
 
-2. Tenga en cuenta: las operaciones que impliquen registrar o actualizar registros, demarcar la transaccionalidad con la anotación @Transactional.
+2.  Tenga en cuenta: las operaciones que impliquen registrar o actualizar registros, demarcar la transaccionalidad con la anotación @Transactional.
 
 3. Cree el archivo de configuracion de la base de datos de pruebas que es de tipo ```h2```, en el directorio ```src/main/resources```:
 ```
@@ -711,7 +711,7 @@ Cree diferentes pruebas utilizando las clases de equivalencia necesarias para la
 
 ## Parte III - Capa Presentación
 
-1. Realice los cambios necesarios en el archivo pom.xml de tal forma que el proyecto se construya de manera correcta como una aplicación WEB, incluyendo las dependencias (jstl, jsf-api, jsf-impl, primefaces, etc) y los plugins (maven war, tomcat7 maven, etc.).
+1.  Realice los cambios necesarios en el archivo pom.xml de tal forma que el proyecto se construya de manera correcta como una aplicación WEB, incluyendo las dependencias (jstl, jsf-api, jsf-impl, primefaces, etc) y los plugins (maven war, tomcat7 maven, etc.).
 
 2. Agregue el archivo web.xml requerido con la configuración necesaria. Al final del archivo agregue el siguiente listener:
 
@@ -790,8 +790,8 @@ public abstract class BasePageBean implements Serializable {
 5. Implementar la aplicación Web que permita agregar nuevos clientes a la videotienda, y registrar alquileres para los mismos. Ambas funcionalidades estarán en dos vistas diferentes (registrocliente.xhtml, registroalquiler.xhtml), de acuerdo con las siguientes especificaciones (tenga en cuenta que, por ahora, la aplicación no maneja ningún esquema de autenticación):
      1. La vista de ‘registro de clientes’ debe (1) mostrar el listado paginado de los clientes registrados hasta el momento (con la opción de selecciar de uno de éstos), y (2) debe mostrar los campos para poder registrar un nuevo cliente (con su respectivo botón de registro). Cuando se registre un nuevo cliente, se deberá mostrar automáticamente el nuevo cliente en la parte superior.
       2. Cuando se seleccione uno de los usuarios ya creados, se debe redirigir al usuario a la vista de ‘registro de alquileres’. En esta vista, dado el cliente seleccionado, se debe (1) mostrar los items que no ha regresado, junto con el valor de la multa total asociada a los mismos a la fecha (fecha del sistema), y (2), debe permtir registrar un nuevo alquiler ingresando el código del item (asumiendo que éste se ingresará con un lector de código de barras), el número de días del alquiler, y mostrando el costo del alquiler antes de su confirmación. En el momento que se confirme, se debe volver a la página anterior (registro de clientes).
-      3. Ambas vistas se basarán en el ManagedBean de sesión ‘AlquilerItemsBean’ que debe extender ‘BasePageBean’, el cual -a su vez- hace uso de la interfaz ‘ServiciosAlquiler’ (no agregar directamente una implementación concreta, esto se realizará en la configuración de Guice).
-      4. El desarrollo de ambas vistas debe quedar distribuido entre los dos desarrolladores de la siguiente manera:
+    3. Ambas vistas se basarán en el ManagedBean de sesión ‘AlquilerItemsBean’ que debe extender ‘BasePageBean’, el cual -a su vez- hace uso de la interfaz ‘ServiciosAlquiler’ (no agregar directamente una implementación concreta, esto se realizará en la configuración de Guice).
+    4. El desarrollo de ambas vistas debe quedar distribuido entre los dos desarrolladores de la siguiente manera:
          * Desarrollador 1: Vista registro de cliente.
          * Desarrollador 2: Vista registro de alquiler.
          * Desarrollador 1 y 2: ManagedBean ‘AlquilerItemsBean’.
