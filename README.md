@@ -790,10 +790,10 @@ i.   La vista de ‘registro de clientes’ debe (1) mostrar el listado paginado
 ii.   Cuando se seleccione uno de los usuarios ya creados, se debe redirigir al usuario a la vista de ‘registro de alquileres’. En esta vista, dado el cliente seleccionado, se debe (1) mostrar los items que no ha regresado, junto con el valor de la multa total asociada a los mismos a la fecha (fecha del sistema), y (2), debe permtir registrar un nuevo alquiler ingresando el código del item (asumiendo que éste se ingresará con un lector de código de barras), el número de días del alquiler, y mostrando el costo del alquiler antes de su confirmación. En el momento que se confirme, se debe volver a la página anterior (registro de clientes). 
 iii.   Ambas vistas se basarán en el ManagedBean de sesión ‘AlquilerItemsBean’ que debe extender ‘BasePageBean’, el cual -a su vez- hace uso de la interfaz ‘ServiciosAlquiler’ (no agregar directamente una implementación concreta, esto se realizará en la configuración de Guice).
 iv.   El desarrollo de ambas vistas debe quedar distribuido entre los dos desarrolladores de la siguiente manera:
-* Desarrollador 1: Vista registro de cliente.
-* Desarrollador 2: Vista registro de alquiler.
-* Desarrollador 1 y 2: ManagedBean ‘AlquilerItemsBean’.
-* Cada integrante debe realizar su propio commit pues después se verificarán los cambios de cada uno.
+*Desarrollador 1: Vista registro de cliente.
+*Desarrollador 2: Vista registro de alquiler.
+*Desarrollador 1 y 2: ManagedBean ‘AlquilerItemsBean’.
+*Cada integrante debe realizar su propio commit pues después se verificarán los cambios de cada uno.
   Nota. Para ver cómo navegar entre vistas con JSF revise [este enlace](http://www.tutorialspoint.com/jsf/jsf_page_navigation.htm).
   
 6.  Construya y despliegue la aplicación con el comando ```mvn tomcat7:run``` y realice pruebas de la presentación, que debe estar funcionando correctamente, con la implementación ‘Stub’ del servicio de alquiler.
@@ -822,4 +822,4 @@ Badge **CircleCI**
 
 URL de la aplicación desplegada en **Heroku**
 
-https://laboratoriocvds8.herokuapp.com/
+[Heroku](https://laboratoriocvds8.herokuapp.com/)
