@@ -70,7 +70,7 @@ public class MyBATISItemDAO implements ItemDAO{
 
 <img  src="https://github.com/JuanMunozD/CVDS8/blob/main/Im%C3%A1genes/Parte1.3.PNG">
 
-4. Cree la interface ```ServiciosAlquiler``` para los servicios de la capa lógica:
+4.  Cree la interface ```ServiciosAlquiler``` para los servicios de la capa lógica:
 ```
 package edu.eci.cvds.samples.services;
 
