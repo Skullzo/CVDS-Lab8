@@ -70,7 +70,7 @@ public class MyBATISItemDAO implements ItemDAO{
 
 <img  src="https://github.com/JuanMunozD/CVDS8/blob/main/Im%C3%A1genes/Parte1.3.PNG">
 
-4. Cree la interface ```ServiciosAlquiler``` para los servicios de la capa lógica:
+4.  Cree la interface ```ServiciosAlquiler``` para los servicios de la capa lógica:
 ```
 package edu.eci.cvds.samples.services;
 
@@ -271,7 +271,7 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
 
 <img  src="https://github.com/JuanMunozD/CVDS8/blob/main/Im%C3%A1genes/Parte1.5.PNG">
 
-6. Realice la implementación de un servicio Stub (ServiciosAlquilerItemsStub) para que se pueda probar la lógica facilmente sin la capa de persistencia:
+6.  Realice la implementación de un servicio Stub (ServiciosAlquilerItemsStub) para que se pueda probar la lógica facilmente sin la capa de persistencia:
 ```
 package edu.eci.cvds.samples.services.impl;
 
@@ -715,7 +715,7 @@ Cree diferentes pruebas utilizando las clases de equivalencia necesarias para la
 
 2. Agregue el archivo web.xml requerido con la configuración necesaria. Al final del archivo agregue el siguiente listener:
 
-3. Cree el listener con el paquete y nombre indicados de forma que se asocie la configuración de Guice y MyBatis a la inicialización del contexto de la aplicación en el servidor tomcat7 embebido, con el siguiente contenido inicial, resolviendo el ‘TODO’ (asociando la interfaz del servicio a la implementación Stub):
+3.  Cree el listener con el paquete y nombre indicados de forma que se asocie la configuración de Guice y MyBatis a la inicialización del contexto de la aplicación en el servidor tomcat7 embebido, con el siguiente contenido inicial, resolviendo el ‘TODO’ (asociando la interfaz del servicio a la implementación Stub):
 ```
 package edu.eci.cvds.guice;
 
@@ -788,7 +788,7 @@ public abstract class BasePageBean implements Serializable {
 ```
 
 5. Implementar la aplicación Web que permita agregar nuevos clientes a la videotienda, y registrar alquileres para los mismos. Ambas funcionalidades estarán en dos vistas diferentes (registrocliente.xhtml, registroalquiler.xhtml), de acuerdo con las siguientes especificaciones (tenga en cuenta que, por ahora, la aplicación no maneja ningún esquema de autenticación):
-      1. La vista de ‘registro de clientes’ debe (1) mostrar el listado paginado de los clientes registrados hasta el momento (con la opción de selecciar de uno de éstos), y (2) debe mostrar los campos para poder registrar un nuevo cliente (con su respectivo botón de registro). Cuando se registre un nuevo cliente, se deberá mostrar automáticamente el nuevo cliente en la parte superior.
+     1. La vista de ‘registro de clientes’ debe (1) mostrar el listado paginado de los clientes registrados hasta el momento (con la opción de selecciar de uno de éstos), y (2) debe mostrar los campos para poder registrar un nuevo cliente (con su respectivo botón de registro). Cuando se registre un nuevo cliente, se deberá mostrar automáticamente el nuevo cliente en la parte superior.
       2. Cuando se seleccione uno de los usuarios ya creados, se debe redirigir al usuario a la vista de ‘registro de alquileres’. En esta vista, dado el cliente seleccionado, se debe (1) mostrar los items que no ha regresado, junto con el valor de la multa total asociada a los mismos a la fecha (fecha del sistema), y (2), debe permtir registrar un nuevo alquiler ingresando el código del item (asumiendo que éste se ingresará con un lector de código de barras), el número de días del alquiler, y mostrando el costo del alquiler antes de su confirmación. En el momento que se confirme, se debe volver a la página anterior (registro de clientes).
       3. Ambas vistas se basarán en el ManagedBean de sesión ‘AlquilerItemsBean’ que debe extender ‘BasePageBean’, el cual -a su vez- hace uso de la interfaz ‘ServiciosAlquiler’ (no agregar directamente una implementación concreta, esto se realizará en la configuración de Guice).
       4. El desarrollo de ambas vistas debe quedar distribuido entre los dos desarrolladores de la siguiente manera:
@@ -799,7 +799,7 @@ public abstract class BasePageBean implements Serializable {
       Nota. Para ver cómo navegar entre vistas con JSF revise [este enlace](http://www.tutorialspoint.com/jsf/jsf_page_navigation.htm).
 6. Construya y despliegue la aplicación con el comando ```mvn tomcat7:run``` y realice pruebas de la presentación, que debe estar funcionando correctamente, con la implementación ‘Stub’ del servicio de alquiler.
 
-7. Modifique la configuración de Guice para asociar a la interfaz, el servicio concreto de alquileres, de forma que todos los cambios que se realicen en la presentación, se actualicen en base de datos de manera correcta.
+7.  Modifique la configuración de Guice para asociar a la interfaz, el servicio concreto de alquileres, de forma que todos los cambios que se realicen en la presentación, se actualicen en base de datos de manera correcta.
 
 8. Realice los ajustes necesarios para que la aplicación funcione de manera correcta y se asegure que todos los métodos están realizando las operaciones sobre la base de datos.
 
@@ -809,6 +809,6 @@ public abstract class BasePageBean implements Serializable {
 
 2. Realice también todas las configuraciones necesarias de Codacy y los ajustes necesarios para obtener una calificación satisfactoria.
 
-3. Verifique que la aplicación se despliegue correctamente en Heroku y sea completamente funcional, tal como se encontraba en local.
+3.  Verifique que la aplicación se despliegue correctamente en Heroku y sea completamente funcional, tal como se encontraba en local.
 
 4. Agregue en el Readme los enlaces necesarios a Heroku, Codacy, etc. para que se pueda verificar el correcto funcionamiento de toda la aplicación.
