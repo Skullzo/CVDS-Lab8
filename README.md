@@ -613,7 +613,6 @@ public class ServiciosAlquilerFactory {
 ## Parte II - Pruebas
 
 1.  Implemente las operaciones de la lógica que hagan falta para satisfacer los requerimientos para la capa de presentación, teniendo en cuenta, que puede requerir agregar más operaciones a los DAOs -y por ende- más mappers de MyBATIS.
-
 2.  Tenga en cuenta: las operaciones que impliquen registrar o actualizar registros, demarcar la transaccionalidad con la anotación @Transactional.
 
 3.  Cree el archivo de configuracion de la base de datos de pruebas que es de tipo ```h2```, en el directorio ```src/main/resources```:
