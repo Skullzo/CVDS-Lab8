@@ -807,7 +807,15 @@ public abstract class BasePageBean implements Serializable {
 
 1. Realice toda la configuración necesaria de CircleCI y Heroku para que la aplicación se construya y despliegue de manera automática cada que se realice un commit al repositorio.
 
+Badge **CircleCI**
+	
+[![CircleCI](https://circleci.com/gh/circleci/circleci-docs.svg?style=svg)](https://circleci.com/gh/circleci/circleci-docs)
+
 2. Realice también todas las configuraciones necesarias de Codacy y los ajustes necesarios para obtener una calificación satisfactoria.
+
+Badge **Codacy**
+	
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/8bccd05e4cee4cd6ac6f79770f0f013a)](https://www.codacy.com/manual/JuanMunozD/CVDS8?utm_source=github.com&utm_medium=referral&utm_content=JuanMunozD/CVDS8&utm_campaign=Badge_Grade)
 
 3. Verifique que la aplicación se despliegue correctamente en Heroku y sea completamente funcional, tal como se encontraba en local.
 
