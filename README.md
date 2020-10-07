@@ -809,10 +809,6 @@ public abstract class BasePageBean implements Serializable {
 
 2. Realice también todas las configuraciones necesarias de Codacy y los ajustes necesarios para obtener una calificación satisfactoria.
 
-Badge **Codacy**
-	
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/ca73ba7b8c624a1e88b5a6e94e57889e)](https://www.codacy.com/gh/JuanMunozD/CVDS8/dashboard?utm_source=github.com&utm_medium=referral&utm_content=JuanMunozD/CVDS8&utm_campaign=Badge_Grade)
-
 3.  Verifique que la aplicación se despliegue correctamente en Heroku y sea completamente funcional, tal como se encontraba en local.
 
 4. Agregue en el Readme los enlaces necesarios a Heroku, Codacy, etc. para que se pueda verificar el correcto funcionamiento de toda la aplicación.
