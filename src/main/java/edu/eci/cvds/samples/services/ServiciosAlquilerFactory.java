@@ -7,7 +7,7 @@ import edu.eci.cvds.sampleprj.dao.TipoItemDAO;
 import edu.eci.cvds.sampleprj.dao.mybatis.MyBATISClienteDAO;
 import edu.eci.cvds.sampleprj.dao.mybatis.MyBATISItemDAO;
 import edu.eci.cvds.sampleprj.dao.mybatis.MyBATISTipoItemDAO;
-import edu.eci.cvds.samples.services.impl.ServiciosAlquilerItemsImpl;
+import edu.eci.cvds.samples.services.impl.ServiciosAlquilerImpl;
 import org.apache.ibatis.transaction.TransactionFactory;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 import org.mybatis.guice.XMLMyBatisModule;
@@ -29,7 +29,7 @@ public class ServiciosAlquilerFactory {
                setEnvironmentId(env);
                setClassPathResource(pathResource);
                bind(ItemDAO.class).to(MyBATISItemDAO.class);
-               bind(ServiciosAlquiler.class).to((Class<? extends ServiciosAlquiler>) ServiciosAlquilerItemsImpl.class);
+               bind(ServiciosAlquiler.class).to((Class<? extends ServiciosAlquiler>) ServiciosAlquilerImpl.class);
            }
        });
    }
