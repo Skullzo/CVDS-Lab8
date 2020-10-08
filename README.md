@@ -651,6 +651,10 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 </configuration>
 ```
 
+**A continuación creamos el archivo de configuración de la base de datos de pruebas ```mybatis-config-h2.xml``` de la siguiente forma.**
+
+<img  src="https://github.com/JuanMunozD/CVDS8/blob/main/Im%C3%A1genes/Parte2.3.PNG">
+
 4.  Cree un archivo de pruebas
 ```
 package edu.eci.cvds.test;
@@ -705,11 +709,44 @@ public class ServiciosAlquilerTest {
 
 Cree diferentes pruebas utilizando las clases de equivalencia necesarias para las diferentes operaciones definidas en los servicios.
 
+**Primero creamos todas las pruebas de aceptación en la clase ```ServiciosAlquilerImpl```, en la cual implementamos las pruebas correspondientes tales como calcular el valor de la multa teniendo en cuenta los días de retraso, consultar los items disponibles, consultar clientes, consultar items del cliente, consultar la multa del alquiler, entre otras.**
+
+<img  src="https://github.com/JuanMunozD/CVDS8/blob/main/Im%C3%A1genes/Parte2.4.1.PNG">
+
+**La implementación de las pruebas de aceptación, para que puedan operar todas de manera correspondiente y pasen de manera satisfactoria, las creamos en la clase ```ServiciosAlquilerTest``` de la siguiente forma.**
+
+<img  src="https://github.com/JuanMunozD/CVDS8/blob/main/Im%C3%A1genes/Parte2.4.PNG">
+
 ## Parte III - Capa Presentación
 
 1.  Realice los cambios necesarios en el archivo pom.xml de tal forma que el proyecto se construya de manera correcta como una aplicación WEB, incluyendo las dependencias (jstl, jsf-api, jsf-impl, primefaces, etc) y los plugins (maven war, tomcat7 maven, etc.).
 
+**Primero agregamos las siguientes dependencias al ```pom.xml``` que incluyen Servlet, Primefaces, javax y sun.faces.**
+
+<img  src="https://github.com/JuanMunozD/CVDS8/blob/main/Im%C3%A1genes/Parte3.1.1.PNG">
+
+**Luego agregamos todas las dependencias de maven correspondientes.**
+
+<img  src="https://github.com/JuanMunozD/CVDS8/blob/main/Im%C3%A1genes/Parte3.1.2.PNG">
+
+**Después agregamos todas las dependencias de maven restantes, las de SQL, h2 database y codehaus.**
+
+<img  src="https://github.com/JuanMunozD/CVDS8/blob/main/Im%C3%A1genes/Parte3.1.3.PNG">
+
+**Por último, agregamos los plugins de maven, el artifact de github para el webapp, y la dependencia de tomcat para correr el servicio en ```localhost```.**
+
+<img  src="https://github.com/JuanMunozD/CVDS8/blob/main/Im%C3%A1genes/Parte3.1.4.PNG">
+
 2.  Agregue el archivo web.xml requerido con la configuración necesaria. Al final del archivo agregue el siguiente listener:
+```
+<listener>
+    <listener-class>edu.eci.cvds.guice.GuiceContextListener</listener-class>
+</listener>
+```
+
+**Ahora agregamos el archivo ```web.xml``` con la configuración que se encuentra a continuación, acompañado del listener correspondiente.**
+
+<img  src="https://github.com/JuanMunozD/CVDS8/blob/main/Im%C3%A1genes/Parte3.2.PNG">
 
 3.  Cree el listener con el paquete y nombre indicados de forma que se asocie la configuración de Guice y MyBatis a la inicialización del contexto de la aplicación en el servidor tomcat7 embebido, con el siguiente contenido inicial, resolviendo el ‘TODO’ (asociando la interfaz del servicio a la implementación Stub):
 ```
@@ -749,6 +786,10 @@ public class GuiceContextListener implements ServletContextListener {
 }
 ```
 
+**Ahora creamos el listener con el paquete y nombre de la siguiente forma, en la cual se asocia la configuración de Guice y MyBatis a la inicialización del contexto de la aplicación en el servidor tomcat7 embebido, creando los ```bind``` correspondientes con cada uno de sus DAO y MyBATIS, quedando de la siguiente forma.**
+
+<img  src="https://github.com/JuanMunozD/CVDS8/blob/main/Im%C3%A1genes/Parte3.3.PNG">
+
 4.  Cree el bean BasePageBean en el paquete “edu.eci.cvds.view” con el siguiente contenido para que se puedan inyectar los componentes necesarios en todas las clases “hijas” que serán los beans de la capa de presentación:
 ```
 package edu.eci.cvds.view;
@@ -782,6 +823,10 @@ public abstract class BasePageBean implements Serializable {
     }
 }
 ```
+
+**Ahora creamos el bean BasePageBean en el paquete ```edu.eci.cvds.view``` con el siguiente contenido para que se puedan inyectar los componentes necesarios en todas las clases “hijas” que serán los beans de la capa de presentación, quedando de la siguiente forma.**
+
+<img  src="https://github.com/JuanMunozD/CVDS8/blob/main/Im%C3%A1genes/Parte3.4.PNG">
 
 5.  Implementar la aplicación Web que permita agregar nuevos clientes a la videotienda, y registrar alquileres para los mismos. Ambas funcionalidades estarán en dos vistas diferentes (registrocliente.xhtml, registroalquiler.xhtml), de acuerdo con las siguientes especificaciones (tenga en cuenta que, por ahora, la aplicación no maneja ningún esquema de autenticación):
 i.   La vista de ‘registro de clientes’ debe (1) mostrar el listado paginado de los clientes registrados hasta el momento (con la opción de selecciar de uno de éstos), y (2) debe mostrar los campos para poder registrar un nuevo cliente (con su respectivo botón de registro). Cuando se registre un nuevo cliente, se deberá mostrar automáticamente el nuevo cliente en la parte superior.
