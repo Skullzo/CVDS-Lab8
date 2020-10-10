@@ -849,6 +849,10 @@ iv.   El desarrollo de ambas vistas debe quedar distribuido entre los dos desarr
 
 <img  src="https://github.com/JuanMunozD/CVDS8/blob/main/Im%C3%A1genes/Parte3.6.PNG">
 
+**Para verificar que está funcionando correctamente, ingresamos el siguiente link en nuestro navegador: ```http://localhost:8080/faces/registrocliente.xhtml```.**
+
+<img  src="https://github.com/JuanMunozD/CVDS8/blob/main/Im%C3%A1genes/Parte3.6.1.PNG">
+
 7.  Modifique la configuración de Guice para asociar a la interfaz, el servicio concreto de alquileres, de forma que todos los cambios que se realicen en la presentación, se actualicen en base de datos de manera correcta.
 
 **A continuación, realizamos las siguientes modificaciones a la clase ```GuieContextListener``` para asociar a la interfaz y el servicio concreto de alquileres, de la siguiente forma.**
