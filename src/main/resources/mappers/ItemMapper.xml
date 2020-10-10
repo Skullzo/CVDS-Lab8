@@ -4,8 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.ItemMapper">
-	
-	<select parameterType="map" id="consultarItem" resultMap="ItemResult">
+
+    <select parameterType="map" id="consultarItem" resultMap="ItemResult">
         select    
         c.nombre,
         c.documento,
@@ -73,7 +73,5 @@
         insert into VI_ITEM(id,nombre,descripcion,fechalanzamiento,tarifaxdia,formatorenta,genero,TIPOITEM_id)
         values (#{item.id},#{item.nombre},#{item.descripcion},#{item.fechal},#{item.tarifa},#{item.formator},#{item.genero},#{item.tipoi.id})        
     </insert>
-
-    
     
 </mapper>

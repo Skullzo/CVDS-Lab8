@@ -7,31 +7,34 @@ import edu.eci.cvds.samples.entities.TipoItem;
 import java.util.*;
 
 public class MyBATISTipoItemDAO implements TipoItemDAO {
-	@Inject
-	private TipoItemMapper tipoItemMapper;
-	
-	@Override
-	public TipoItem load(int id) throws PersistenceException {
-		try {
-			return tipoItemMapper.getTipoItem(id);
-			
-		} catch ( 
-		org.apache.ibatis.exceptions.PersistenceException e) {
-			throw new PersistenceException("Error al consultar el tipo de item " + Integer.toString(id), e);
-		}
-	}
-		public void save(String des) throws PersistenceException {
-			try {
-				tipoItemMapper.addTipoItem(des);;
-				
-			} catch (
-		    org.apache.ibatis.exceptions.PersistenceException e) {
-				throw new PersistenceException("Error al guardar la descripción ", e);
-			}
-		}
-		@Override
-		public List<TipoItem> loadAll() throws PersistenceException {
-			// TODO Auto-generated method stub
-			return null;
-		}
-	}
+
+    @Inject
+    private TipoItemMapper tipoItemMapper;
+
+    @Override
+    public TipoItem load(int id) throws PersistenceException {
+        try {
+            return tipoItemMapper.getTipoItem(id);
+        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+            throw new PersistenceException("Error al consultar el tipo de item " + Integer.toString(id), e);
+        }
+    }
+
+    public void save(String des) throws PersistenceException {
+        try {
+            tipoItemMapper.addTipoItem(des);;
+        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+            throw new PersistenceException("Error al guardar la descripción ", e);
+        }
+
+    }
+
+    @Override
+    public List<TipoItem> loadAll() throws PersistenceException {
+        try {
+            return tipoItemMapper.getTiposItems();
+        } catch (org.apache.ibatis.exceptions.PersistenceException e) {
+            throw new PersistenceException("Error al guardar la descripción ", e);
+        }
+    }
+}

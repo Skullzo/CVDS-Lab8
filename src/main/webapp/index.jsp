@@ -1,6 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Menu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="estilo.css">
+</head>
+
 <body>
-<h2>Hello World!</h2>
+    <p> https://lab08cvds.herokuapp.com/faces/registrocliente.xhtml </p>
 </body>
 </html>
