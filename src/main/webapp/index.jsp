@@ -8,6 +8,6 @@
 </head>
 
 <body>
-    <p> https://lab08cvds.herokuapp.com/faces/registrocliente.xhtml </p>
+    <p> https://laboratoriocvds8.herokuapp.com/faces/registrocliente.xhtml </p>
 </body>
 </html>
