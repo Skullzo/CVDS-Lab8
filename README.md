@@ -847,7 +847,7 @@ iv.   El desarrollo de ambas vistas debe quedar distribuido entre los dos desarr
 
 **Ahora, desplegamos la aplicación con el comando ```mvn tomcat7:run``` de la siguiente forma.**
 
-<img  src="https://github.com/JuanMunozD/CVDS8/blob/main/Im%C3%A1genes/Parte3.6.PNG">
+<img  src="https://github.com/JuanMunozD/CVDS8/blob/main/Im%C3%A1genes/Parte3.6.11.PNG">
 
 **Para verificar que está funcionando correctamente, ingresamos el siguiente link en nuestro navegador: ```http://localhost:8080/faces/registrocliente.xhtml```.**
 
