@@ -839,9 +839,21 @@ iv.   El desarrollo de ambas vistas debe quedar distribuido entre los dos desarr
 *Cada integrante debe realizar su propio commit pues después se verificarán los cambios de cada uno.
   Nota. Para ver cómo navegar entre vistas con JSF revise [este enlace](http://www.tutorialspoint.com/jsf/jsf_page_navigation.htm).
   
+**Para realizar el siguiente procedimiento, primero creamos ```registrocliente.xml``` de la siguiente forma, para poder construir la tabla de manera apropiada con el registro de todos los clientes en una tabla ordenada.**
+
+<img  src="https://github.com/JuanMunozD/CVDS8/blob/main/Im%C3%A1genes/Parte3.5.PNG">
+  
 6.  Construya y despliegue la aplicación con el comando ```mvn tomcat7:run``` y realice pruebas de la presentación, que debe estar funcionando correctamente, con la implementación ‘Stub’ del servicio de alquiler.
 
+**Ahora, desplegamos la aplicación con el comando ```mvn tomcat7:run``` de la siguiente forma.**
+
+<img  src="https://github.com/JuanMunozD/CVDS8/blob/main/Im%C3%A1genes/Parte3.6.PNG">
+
 7.  Modifique la configuración de Guice para asociar a la interfaz, el servicio concreto de alquileres, de forma que todos los cambios que se realicen en la presentación, se actualicen en base de datos de manera correcta.
+
+**A continuación, realizamos las siguientes modificaciones a la clase ```GuieContextListener``` para asociar a la interfaz y el servicio concreto de alquileres, de la siguiente forma.**
+
+<img  src="https://github.com/JuanMunozD/CVDS8/blob/main/Im%C3%A1genes/Parte3.7.PNG">
 
 8.  Realice los ajustes necesarios para que la aplicación funcione de manera correcta y se asegure que todos los métodos están realizando las operaciones sobre la base de datos.
 
