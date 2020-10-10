@@ -877,4 +877,4 @@ Badge **CircleCI**
 
 URL de la aplicación desplegada en **Heroku**
 
-[Heroku](https://laboratoriocvds8.herokuapp.com/)
+[Heroku](https://laboratoriocvds8.herokuapp.com/faces/registrocliente.xhtml)
